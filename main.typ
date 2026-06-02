@@ -342,3 +342,7 @@
     x = chevron.l x, b_1 chevron.r b_1 + ... + chevron.l x, b_n chevron.r b_n
   $
 ]
+
+#problem[
+  Define inner product
+]
