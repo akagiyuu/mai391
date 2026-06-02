@@ -137,10 +137,26 @@
 #problem[
   Consider $V = RR^2$. Define
   $
-    chevron.l x, y chevron.r = x_1 y_1 - x_1 y_2 + x_2 y_1 + x_2 y_2
+    chevron.l x, y chevron.r = 2 x_1 y_1 + x_1 y_2 + x_2 y_1 + 2 x_2 y_2
   $
   Show that $chevron.l .,. chevron.r$ is an inner product in $RR^2$
 ]
 #solution[
-    We see that $chevron.l .,. chevron.r$ is a bilinear mapping _(The solution is similar to @prob:bilinear)_
+  - $chevron.l .,. chevron.r$ is a bilinear mapping _(The solution is similar to @prob:bilinear)_ \ \
+
+  - $chevron.l .,. chevron.r$ is symmetric
+  $
+    chevron.l x, y chevron.r & = 2 x_1 y_1 + x_1 y_2 + x_2 y_1 + 2 x_2 y_2 \
+                             & = 2 y_1 x_1 + y_1 x_2 + y_2 x_1 + 2 x_2 y_2 = B(y, x)
+  $
+
+  - $chevron.l .,. chevron.r$ is positive definite
+  $
+    chevron.l x, x chevron.r & = 2 x_1^2 + 2 x_2^2 + 2 x_1 x_2 \
+                             & = (x_1 + x_2)^2 + x_1^2 + x_2^2 >= 0
+  $
+  The equality occur only when $x_1 = 0$, $x_2 = 0$, $x_1 + x_2 = 0$ which is $x = arrow(0)$\
+  $=> chevron.l .,. chevron.r > 0$ for any $RR^2 in.rev x != arrow(0)$, or $chevron.l .,. chevron.r$ is positive definite \ \
+
+  So $chevron.l .,. chevron.r$ satisfies all properties to be an inner product
 ]
