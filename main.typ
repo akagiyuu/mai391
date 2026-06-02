@@ -422,3 +422,70 @@
     {vec(1/sqrt(2), 1/sqrt(2), 0), vec(1/sqrt(6), -1/sqrt(6), 2/sqrt(6)), vec(-1/sqrt(3), 1/sqrt(3), 1/sqrt(3))}
   $
 ]
+
+= Matrix Decomposition
+
+== Determinant
+#example[$ A = mat(a) in RR^(1 crossmark 1) => det(A) = a $]
+
+#example[$ A = mat(a, b; c, d) in RR^(2 crossmark 2) => det(A) = a d - b c $]
+
+#property[
+  For $A in RR^(n crossmark n)$
+  $
+    det(A B) = det(A) det(B)
+  $
+  $
+    det(A^T) = det(A)
+  $
+  $
+    det(A^-1) = 1/det(A)
+  $
+  $
+    det(k A) = k^n det(A)
+  $
+]
+#property[
+  - Adding a multiple of a column/row to another one (i.e., apply $R_2 = R_2 - 2 * R_1$) does not change $det(A)$
+  - Swapping two rows/columns changes the sign of $det(A)$ (i.e., $det(A) = -det(A)$ when swapping row 1 and 2)
+]
+#theorem[
+  Let $A in RR^(n crossmark n)$ The followings are equivalent _(mean that if one is correct then all others are correct, for example if *1* is correct then *2*, *3*, *4*, *5* is correct)_:
+  + $det(A) != 0$
+  + $A$ has full rank. $"rk"(A) = n$
+  + $A$ is invertible _($A^(-1)$ exist)_
+  + The homogeneous system $A x = 0$ for $x in RR^n$ has only trivial solution _(the solution is $x = 0 = mat(0, ..., 0)^T$)_
+  + The linear system $A x = b$ for $x, b in RR^n$ has unique solution
+]
+#note[Rank of a matrix is equal to number of pivot in its row echelon form]
+
+== Trace
+
+#definition[
+  The *trace* of a matrix $A in RR^(n crossmark n)$ is defined as:
+  $ tr(A) = sum_(i = 1)^n a_(i i) $,
+  the sum of the diagonal elements of A
+]
+#example[
+  $
+    tr(mat(2, 3, 1; 0, -3, 4; 1, -2, 4)) = 2 - 3 + 4 = 3
+  $
+]
+#property[
+  $ tr(A + B) = tr(A) + tr(B) $
+  $ tr(k A) = k tr(A) $
+  $ tr(I_n) = n $
+  $ tr(A B) = tr(B A) $
+]
+
+== Eigenvalues and Eigenvectors
+#definition[
+  The *characteristic polynomial* of $A in RR^(n crossmark n)$
+  $
+    p_A := det(A - lambda I_n) = c_0 + c_1 lambda + ... c_n lambda^n
+  $
+  Where:
+  - $c_0 = det(A)$
+  - $c_(n - 1) = (-1)^(n - 1) tr(A)$
+  - $c_n = (-1)^n$
+]
