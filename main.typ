@@ -249,6 +249,29 @@
     cos theta = (chevron.l x, y chevron.r)/(||x|| ||y||)
   $
 ]
+#problem[
+  Define the inner product $chevron.l .,. chevron.r$
+  $
+    chevron.l x, y chevron.r = x dot y = x_1 y_1 + x_2 y_2 italic("(dot product)")
+  $
+  Find the angle between $x = vec(1, 0)$ and $y = vec(-1/2, sqrt(3)/2)$
+]
+#solution(qed: auto)[
+  $
+    chevron.l x, y chevron.r = 1 dot (-1/2) + 0 dot sqrt(3)/2 = -1/2
+  $
+  $
+    ||x|| = sqrt(1 dot 1 + 0 dot 0) = 1 \
+    ||y|| = sqrt(-1/2 dot -1/2 + sqrt(3)/2 dot sqrt(3)/2) = 1
+  $
+  $
+    cos theta = (chevron.l x, y chevron.r)/(||x|| ||y||) = (-1/2)/(1 dot 1) = -1/2
+  $
+  $
+    => theta = cos^(-1)(-1/2) = (2 pi) / 3
+  $
+]
+
 #definition[
   Two vectors $x$ and $y$ are *orthogonal* (or *$x perp y$*) $<=> chevron.l x, y chevron.r = 0$
 ]
