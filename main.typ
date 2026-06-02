@@ -181,7 +181,7 @@
     A = mat(2, 1; 1, 3), B = mat(1, 2; 2, 3)
   $
   Show that $A$ is positive definite but $B$ is not
-]
+] <prob:positive-definite-matrix>
 #solution[
   $
     x^T A x &= mat(x_1, x_2) mat(2, 1; 1, 3) vec(x_1, x_2) \
@@ -201,4 +201,13 @@
   Take $x = vec(-2, 1) => x^T B x = -1$
 
   So $B$ is not positive definite and not positive semidefinite
+]
+#note[
+  When multiply matrices of form $x^T A x$ _(like in @prob:positive-definite-matrix)_, the coefficient of
+  $
+    x_i x_j = cases(
+      a_(i j) ", if" i = j,
+      a_(i j) + a_(j i) ", if" i != j
+    )
+  $
 ]
