@@ -351,28 +351,39 @@
 ]
 #solution[
   $
-    chevron.l b_1, b_1 chevron.r &= chevron.l vec(1, -1), vec(1, -1) chevron.r \
-                                 &= mat(1, -1) A vec(1, -1) \
-                                 &= 1
+    chevron.l b_1, b_1 chevron.r & = chevron.l vec(1, -1), vec(1, -1) chevron.r \
+                                 & = mat(1, -1) A vec(1, -1) \
+                                 & = 1
   $
   $
-    chevron.l b_1, b_2 chevron.r &= chevron.l vec(1, -1), vec(1, 0) chevron.r \
-                                 &= mat(1, -1) A vec(1, 0) \
-                                 &= 0
+    chevron.l b_1, b_2 chevron.r & = chevron.l vec(1, -1), vec(1, 0) chevron.r \
+                                 & = mat(1, -1) A vec(1, 0) \
+                                 & = 0
   $
   $
-    chevron.l b_2, b_1 chevron.r &= chevron.l vec(1, 0), vec(1, -1) chevron.r \
-                                 &= mat(1, 0) A vec(1, -1) \
-                                 &= 0
+    chevron.l b_2, b_1 chevron.r & = chevron.l vec(1, 0), vec(1, -1) chevron.r \
+                                 & = mat(1, 0) A vec(1, -1) \
+                                 & = 0
   $
   $
-    chevron.l b_2, b_2 chevron.r &= chevron.l vec(1, 0), vec(1, 0) chevron.r \
-                                 &= mat(1, 0) A vec(1, 0) \
-                                 &= 1
+    chevron.l b_2, b_2 chevron.r & = chevron.l vec(1, 0), vec(1, 0) chevron.r \
+                                 & = mat(1, 0) A vec(1, 0) \
+                                 & = 1
   $
   So $B$ is an orthonormal basis
 ]
 
-
-
-
+#theorem[Gram-Schmidt process][
+  Let $V$ be an inner product space and let ${v_1, ..., v_n}$ be *any basis* of $V$\
+  Define vectors $b_1, b_2,..., b_n$ in $V$ as follows:
+  $
+    b_1 &= v_1 \
+    b_2 &= v_2 - (chevron.l v_2, b_1 chevron.r)/(||b_1||^2) b_1 \
+    ... \
+    b_k &= v_k - (chevron.l v_k, b_1 chevron.r)/(||b_1||^2) b_1 - (chevron.l v_k, b_2 chevron.r)/(||b_2||^2) b_2 - ... - (chevron.l v_k, b_(k - 1) chevron.r)/(||b_(k - 1)||^2) b_k \
+  $
+  for each $k = 2,..., n$. Then
+  - ${b_1, ..., b_n}$ is an orthogonal basis of V
+  - $"span"{b_1, ..., b_k} = "span"{v_1, ..., v_k}$ for each $k = 1,...,n$
+  - ${b_1/(||b_1||), ..., b_n/(||b_n||)}$ is an orthonormal basis of $V$
+]
