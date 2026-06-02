@@ -143,7 +143,7 @@
   $
   Show that $chevron.l .,. chevron.r$ is an inner product in $RR^2$
 ]  <prob:positive-definite>
-#solution[
+#solution(qed: auto)[
   - $chevron.l .,. chevron.r$ is a bilinear mapping _(The solution is similar to @prob:bilinear)_ \ \
 
   - $chevron.l .,. chevron.r$ is symmetric
@@ -182,7 +182,7 @@
   $
   Show that $A$ is positive definite but $B$ is not
 ] <prob:positive-definite-matrix>
-#solution[
+#solution(qed: auto)[
   $
     x^T A x &= mat(x_1, x_2) mat(2, 1; 1, 3) vec(x_1, x_2) \
             &= 2 x_1^2 + 2 x_1 x_2 + 3 x_2^2 \
@@ -211,3 +211,38 @@
     )
   $
 ]
+
+== Lengths and Distances
+
+#definition[
+  Consider an inner product space $(V, chevron.l .,. chevron.r)$:
+  - The *norm* is $||x|| := sqrt(chevron.l x"," x chevron.r)$
+  - The *distance between $x$ and $y$* is $d(x, y) := ||x - y|| = sqrt(chevron.l x - y"," x - y chevron.r)$
+]
+#theorem[
+  *Cauchy-Schwarz* inequality
+  $
+    |chevron.l x, y chevron.r| <= ||x|| ||y||
+  $
+]
+
+#problem[
+  Let the inner product $chevron.l .,. chevron.r$ be defined on $RR^n$ by
+  $
+    chevron.l x, y chevron.r = x_1 y_1 - x_1 y_2 - x_2 y_1 + 3 x_2 y_2
+  $
+  Find the distance between $u = vec(1, 1)$ and $v = vec(-1, 2)$
+]
+#solution(qed: auto)[
+  $
+    u - v = vec(2, -1)
+  $
+  $
+    d(u, v) &= ||u - v|| = sqrt(chevron.l u - v", " u - v chevron.r) \
+            &= sqrt(2 dot 2 - 2 dot (-1) - (-1) dot 2 + 3 dot (-1) dot (-1)) \
+            &= sqrt(11)
+  $
+]
+
+
+
