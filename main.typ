@@ -451,11 +451,11 @@
 ]
 #theorem[
   Let $A in RR^(n crossmark n)$ The followings are equivalent _(mean that if one is correct then all others are correct, for example if *1* is correct then *2*, *3*, *4*, *5* is correct)_:
-  + $det(A) != 0$
-  + $A$ has full rank. $"rk"(A) = n$
-  + $A$ is invertible _($A^(-1)$ exist)_
-  + The homogeneous system $A x = 0$ for $x in RR^n$ has only trivial solution _(the solution is $x = 0 = mat(0, ..., 0)^T$)_
-  + The linear system $A x = b$ for $x, b in RR^n$ has unique solution
+  - $det(A) != 0$
+  - $A$ has full rank. $"rk"(A) = n$
+  - $A$ is invertible _($A^(-1)$ exist)_
+  - The homogeneous system $A x = 0$ for $x in RR^n$ has only trivial solution _(the solution is $x = 0 = mat(0, ..., 0)^T$)_
+  - The linear system $A x = b$ for $x, b in RR^n$ has unique solution
 ]
 #note[Rank of a matrix is equal to number of pivot in its row echelon form]
 
@@ -478,6 +478,10 @@
   $ tr(A B) = tr(B A) $
 ]
 
+== Dimension
+//TODO: implement
+For later
+
 == Eigenvalues and Eigenvectors
 #definition[
   The *characteristic polynomial* of $A in RR^(n crossmark n)$
@@ -488,4 +492,73 @@
   - $c_0 = det(A)$
   - $c_(n - 1) = (-1)^(n - 1) tr(A)$
   - $c_n = (-1)^n$
+]
+#definition[
+  Let $A in RR^(n crossmark n)$ be a square matrix. Then $lambda in RR$ is an *eigenvalue* of $A$ and non-zero vector $x in RR^n$ is the *corresponding eigenvector* of $A$ if
+  $
+    A v = lambda v
+  $
+]
+#theorem[
+  The following statements are equivalent:
+  - $lambda$ is an eigenvalue of $A$
+  - There exists a non-zero vector $v in RR^n$ with $A v = lambda v$
+  - The homogeneous system $(A - lambda I_n)v = 0$ has non trivial solution
+  - $"rk"(A - lambda I_n) < n$ _(not full rank)_
+  - $det(A - lambda I_n) = 0$
+  - $lambda$ is a root of the *characteristic polynomial* $p_A (lambda)$ of A (i.e., $p_A (lambda) = 0$)
+]
+#definition[
+  Let a square matrix $A$ have an eigenvalue $lambda_i$, then:
+  - The *algebraic multiplicity* of $lambda_i$ is the number of times the root appears in the characteristic polynomial
+  - The *eigenspace* of A w.r.t $lambda_i$, denoted by $E_(lambda_i)$ is subspace spanned by all eigenvectors of $A$ corresponding to $lambda_i$
+  - The *geometric multiplicity* of $lambda_i$ is the dimension of $E_(lambda_i)$
+  - The *spectrum* of $A$ is the set of all eigenvalues of $A$
+]
+#example[
+  $
+    A = mat(2, 1, 0; 0, 2, 0; 0, 0, 3)
+  $
+  $
+    => p_A (lambda) & = det(A - lambda I_3) \
+                    & = det(mat(2 - lambda, 1, 0; 0, 2 - lambda, 0; 0, 0, 3 - lambda)) \
+                    & = (2 - lambda)^2(3 - lambda)
+  $
+  The *spectrum* of $A$ is ${2, 3}$
+  - With $lambda = 2$ \
+    The *algebraic multiplicity* is 2
+    $
+      (A - 2 I_3)v = 0 \
+      => mat(0, 1, 0; 0, 0, 0; 0, 0, 1) vec(x, y, z) = vec(0, 0, 0) \
+      => cases(
+        y = 0,
+        0 = 0,
+        z = 0
+      ) \
+      => v = vec(x, 0, 0) " for all" x in RR
+    $
+
+  - With $lambda = 3$ \
+    The *algebraic multiplicity* is 1
+    $ (A - 3 I_3)v = 0 \
+    => mat(-1, 1, 0; 0, -1, 0; 0, 0, 0) vec(x, y, z) = vec(0, 0, 0) \
+    => cases(
+      -x + y = 0,
+      -y = 0,
+      0 = 0
+    ) \
+    => cases(
+      x = 0,
+      y = 0
+    ) \
+    => v = vec(0, 0, z) " for all" z in RR $,
+]
+#theorem[
+  For $A in RR^(n crossmark n)$
+  $
+    det(A) = product_(i = 1)^n lambda_i
+  $
+  $
+    tr(A) = sum_(i = 1)^n lambda_i
+  $
 ]
