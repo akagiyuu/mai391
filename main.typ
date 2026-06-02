@@ -18,6 +18,8 @@
   lowercase-references: false,
 )
 #set text(size: 12pt)
+#set math.vec(delim: "[")
+#set math.mat(delim: "[")
 
 = Analytic Geometry
 
@@ -140,7 +142,7 @@
     chevron.l x, y chevron.r = 2 x_1 y_1 + x_1 y_2 + x_2 y_1 + 2 x_2 y_2
   $
   Show that $chevron.l .,. chevron.r$ is an inner product in $RR^2$
-]
+]  <prob:positive-definite>
 #solution[
   - $chevron.l .,. chevron.r$ is a bilinear mapping _(The solution is similar to @prob:bilinear)_ \ \
 
@@ -148,7 +150,7 @@
   $
     chevron.l x, y chevron.r & = 2 x_1 y_1 + x_1 y_2 + x_2 y_1 + 2 x_2 y_2 \
                              & = 2 y_1 x_1 + y_1 x_2 + y_2 x_1 + 2 x_2 y_2 = B(y, x)
-  $
+  $ 
 
   - $chevron.l .,. chevron.r$ is positive definite
   $
@@ -159,4 +161,44 @@
   $=> chevron.l .,. chevron.r > 0$ for any $RR^2 in.rev x != arrow(0)$, or $chevron.l .,. chevron.r$ is positive definite \ \
 
   So $chevron.l .,. chevron.r$ satisfies all properties to be an inner product
+]
+
+#definition[
+  A symmetric matrix $A in RR^(n crossmark n)$ is
+  - *positive definite* if
+  $
+    x^T A x > 0, " for all non-zero vectors" x in RR^n
+  $
+  - *positive semidefinite* if
+  $
+    x^T A x >= 0, " for all non-zero vectors" x in RR^n
+  $
+]
+
+#problem[
+  Consider the matrices
+  $
+    A = mat(2, 1; 1, 3), B = mat(1, 2; 2, 3)
+  $
+  Show that $A$ is positive definite but $B$ is not
+]
+#solution[
+  $
+    x^T A x &= mat(x_1, x_2) mat(2, 1; 1, 3) vec(x_1, x_2) \
+            &= 2 x_1^2 + 2 x_1 x_2 + 3 x_2^2 \
+            & > 0 " for all non-zero vectors" x in RR^n
+  $ \
+
+  _(the proof for why > 0 is similar to @prob:positive-definite)_
+
+  Also $A$ is symmetric so $A$ is positive definite
+
+  $
+    x^T B x &= mat(x_1, x_2) mat(1, 2; 2, 3) vec(x_1, x_2) \
+            &= x_1^2 + 4 x_1 x_2 + 3 x_2^2
+  $ \
+
+  Take $x = vec(-2, 1) => x^T B x = -1$
+
+  So $B$ is not positive definite and not positive semidefinite
 ]
