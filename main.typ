@@ -150,7 +150,7 @@
   $
     chevron.l x, y chevron.r & = 2 x_1 y_1 + x_1 y_2 + x_2 y_1 + 2 x_2 y_2 \
                              & = 2 y_1 x_1 + y_1 x_2 + y_2 x_1 + 2 x_2 y_2 = B(y, x)
-  $ 
+  $
 
   - $chevron.l .,. chevron.r$ is positive definite
   $
@@ -184,8 +184,8 @@
 ] <prob:positive-definite-matrix>
 #solution(qed: auto)[
   $
-    x^T A x &= mat(x_1, x_2) mat(2, 1; 1, 3) vec(x_1, x_2) \
-            &= 2 x_1^2 + 2 x_1 x_2 + 3 x_2^2 \
+    x^T A x & = mat(x_1, x_2) mat(2, 1; 1, 3) vec(x_1, x_2) \
+            & = 2 x_1^2 + 2 x_1 x_2 + 3 x_2^2 \
             & > 0 " for all non-zero vectors" x in RR^n
   $ \
 
@@ -194,8 +194,8 @@
   Also $A$ is symmetric so $A$ is positive definite
 
   $
-    x^T B x &= mat(x_1, x_2) mat(1, 2; 2, 3) vec(x_1, x_2) \
-            &= x_1^2 + 4 x_1 x_2 + 3 x_2^2
+    x^T B x & = mat(x_1, x_2) mat(1, 2; 2, 3) vec(x_1, x_2) \
+            & = x_1^2 + 4 x_1 x_2 + 3 x_2^2
   $ \
 
   Take $x = vec(-2, 1) => x^T B x = -1$
@@ -214,11 +214,8 @@
 
 == Lengths and Distances
 
-#definition[
-  Consider an inner product space $(V, chevron.l .,. chevron.r)$:
-  - The *norm* is $||x|| := sqrt(chevron.l x"," x chevron.r)$
-  - The *distance between $x$ and $y$* is $d(x, y) := ||x - y|| = sqrt(chevron.l x - y"," x - y chevron.r)$
-]
+#definition[The *norm* is $||x|| := sqrt(chevron.l x"," x chevron.r)$]
+#definition[The *distance between $x$ and $y$* is $d(x, y) := ||x - y|| = sqrt(chevron.l x - y"," x - y chevron.r)$]
 #theorem[
   *Cauchy-Schwarz* inequality
   $
@@ -238,11 +235,23 @@
     u - v = vec(2, -1)
   $
   $
-    d(u, v) &= ||u - v|| = sqrt(chevron.l u - v", " u - v chevron.r) \
-            &= sqrt(2 dot 2 - 2 dot (-1) - (-1) dot 2 + 3 dot (-1) dot (-1)) \
-            &= sqrt(11)
+    d(u, v) & = ||u - v|| = sqrt(chevron.l u - v", " u - v chevron.r) \
+            & = sqrt(2 dot 2 - 2 dot (-1) - (-1) dot 2 + 3 dot (-1) dot (-1)) \
+            & = sqrt(11)
   $
 ]
 
+== Angles and Orthogonality
 
-
+#definition[
+  The *angle* between vector $x$ and $y$ is the number $theta in [0, pi]$ defined by
+  $
+    cos theta = (chevron.l x, y chevron.r)/(||x|| ||y||)
+  $
+]
+#definition[
+  Two vectors $x$ and $y$ are *orthogonal* (or *$x perp y$*) $<=> chevron.l x, y chevron.r = 0$
+]
+#definition[
+  If *$x perp y$* and $||x|| = ||y|| = 1$ _($x$ and $y$ are unit vectors)_ then $x$ and $y$ are *orthonormal*
+]
