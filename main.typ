@@ -298,7 +298,7 @@
   $
 ]
 #note[
-  For square matrix $A in RR^(n crossmark n) $, $A^(-1)$ is defined as matrix with
+  For square matrix $A in RR^(n crossmark n)$, $A^(-1)$ is defined as matrix with
   $
     A A^(-1) = A^(-1) A = I_n
   $
@@ -344,5 +344,35 @@
 ]
 
 #problem[
-  Define inner product
+  Show that $B = {vec(1, -1), vec(1, 0)}$ is an orthonormal basis of $RR^n$ with inner product
+  $
+    chevron.l x, y chevron.r = x^T A y, " where" A = mat(1, 1; 1, 2)
+  $
 ]
+#solution[
+  $
+    chevron.l b_1, b_1 chevron.r &= chevron.l vec(1, -1), vec(1, -1) chevron.r \
+                                 &= mat(1, -1) A vec(1, -1) \
+                                 &= 1
+  $
+  $
+    chevron.l b_1, b_2 chevron.r &= chevron.l vec(1, -1), vec(1, 0) chevron.r \
+                                 &= mat(1, -1) A vec(1, 0) \
+                                 &= 0
+  $
+  $
+    chevron.l b_2, b_1 chevron.r &= chevron.l vec(1, 0), vec(1, -1) chevron.r \
+                                 &= mat(1, 0) A vec(1, -1) \
+                                 &= 0
+  $
+  $
+    chevron.l b_2, b_2 chevron.r &= chevron.l vec(1, 0), vec(1, 0) chevron.r \
+                                 &= mat(1, 0) A vec(1, 0) \
+                                 &= 1
+  $
+  So $B$ is an orthonormal basis
+]
+
+
+
+
