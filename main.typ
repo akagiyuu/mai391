@@ -316,10 +316,29 @@
 ]
 
 #definition[
-  Given a vector space $V$, a set of vectors $B = {v_1, ..., v_n}$ is basis if:
+  Given a vector space $V$, a set of vectors $B = {b_1, ..., b_n}$ is basis if:
   - *Every subset* of $B$ is *linear independent*
   - For every $x in V$ there exist ${a_1, ..., a_n}$ such that
   $
-    a_1 v_1 + ... + a_n v_n = x
+    a_1 b_1 + ... + a_n b_n = x
+  $
+]
+
+#example[Most common basis for $RR^2$ is $B = {vec(1, 0), vec(0, 1)}$]
+
+#definition[
+  Consider an dimensional inner product vector space $(V, chevron.l .,. chevron.r)$ and a basis $B = {b_1, ..., b_n}$ of $V$. $B$ is *orthonormal basis* if
+
+  $
+    chevron.l b_i, b_j chevron.r = cases(
+      1 "  if" i = j,
+      0 "  if" i != j
+    )
+  $
+]
+#theorem[
+  Let $B = {b_1, ..., b_n}$ be an orthonormal basis of an inner product space $V$. If $x$ is any vector in $V$, then
+  $
+    x = chevron.l x, b_1 chevron.r b_1 + ... + chevron.l x, b_n chevron.r b_n
   $
 ]
