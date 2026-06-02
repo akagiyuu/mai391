@@ -304,3 +304,22 @@
   $
   So if $A$ is orthogonal, $A^T = A^(-1)$
 ]
+
+== Orthonormal Basis
+
+#definition[
+  Given a vector space $V$, a set of vectors ${v_1, ..., v_n}$ is *linear independent* if the *only solution* to equation
+  $
+    a_1 v_1 + ... + a_n v_n = 0
+  $
+  is $a_1 = ... = a_n = 0$
+]
+
+#definition[
+  Given a vector space $V$, a set of vectors $B = {v_1, ..., v_n}$ is basis if:
+  - *Every subset* of $B$ is *linear independent*
+  - For every $x in V$ there exist ${a_1, ..., a_n}$ such that
+  $
+    a_1 v_1 + ... + a_n v_n = x
+  $
+]
