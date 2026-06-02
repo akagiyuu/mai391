@@ -21,6 +21,8 @@
 #set math.vec(delim: "[")
 #set math.mat(delim: "[")
 
+#let ip(u, v) = $ chevron.l #u, #v chevron.r $
+
 = Analytic Geometry
 
 == Norm
@@ -28,46 +30,46 @@
 #definition[
   A norm on V is a non-negative function
   $
-    ||.||: V -> RR
+    norm(.): V -> RR
   $
   such that $forall k in RR$ and $x,y in V$:
-  - _Absolute homogeneous_: $||k x|| = abs(k) ||x||$
-  - *Triangle inequality*: $||x + y|| <= ||x|| + ||y||$
-  - *Positive definite*: $||x|| >= 0$ and $||x|| = 0$ if and only if $x = arrow(0)$
+  - _Absolute homogeneous_: $norm(k x) = abs(k) norm(x)$
+  - *Triangle inequality*: $norm(x + y) <= norm(x) + norm(y)$
+  - *Positive definite*: $norm(x) >= 0$ and $norm(x) = 0$ if and only if $x = arrow(0)$
 ]
 
 #definition[
-  Let p be as positive number. The $l_p$-norm $||.||_p$ in $RR^n$:
+  Let p be as positive number. The $l_p$-norm $norm(.)_p$ in $RR^n$:
   $
-    ||x||_p = root(p, sum_(i = 1)^n |x_i|^p) "  for any" x = vec(x_1, ..., x_n) in RR^n
+    norm(x)_p = root(p, sum_(i = 1)^n |x_i|^p) "  for any" x = vec(x_1, ..., x_n) in RR^n
   $
 ]
 #example[
   - $p = 1 ->$ Manhattan norm $l_1$:
   $
-    ||x||_1 = sum_(i = 1)^n |x_i|
+    norm(x)_1 = sum_(i = 1)^n |x_i|
   $
   - $p = 2 ->$ Euclidean norm $l_1$:
   $
-    ||x||_2 = sqrt(sum_(i = 1)^n |x_i|^2)
+    norm(x)_2 = sqrt(sum_(i = 1)^n |x_i|^2)
   $
   - $p = infinity ->$ maximum norm $l_infinity$:
   $
-    ||x||_infinity = max{|x_1|,...,|x_n|}
+    norm(x)_infinity = max{|x_1|,...,|x_n|}
   $
 ]
 
 #definition[
   Euclidean norm on $RR^(m #sym.crossmark n)$:
   $
-    ||A|| = (sum_(i = 1)^m sum_(j = 1)^n a_(i j)^2)^(1/2)
+    norm(A) = (sum_(i = 1)^m sum_(j = 1)^n a_(i j)^2)^(1/2)
   $
 ]
 
 #definition[
   Spectral norm on $RR^(m #sym.crossmark n)$:
   $
-    ||A||_2 = max_(x in RR^n, ||x||_2 = 1) ||A x||_2
+    norm(A)_2 = max_(x in RR^n, norm(x)_2 = 1) norm(A x)_2
   $
 ]
 
@@ -118,11 +120,11 @@
 
 #definition[
   A positive definite, symmetric bilinear mapping $B: V crossmark V -> R$ is called an *inner product*.
-  We typically write $chevron.l x, y chevron.r$ instead of $B(x, y)$ for inner product
+  We typically write $ip(x, y)$ instead of $B(x, y)$ for inner product
 ]
 
 #definition[
-  The pair $(V, chevron.l ., . chevron.r)$ is called *inner product space*
+  The pair $(V, ip(., .))$ is called *inner product space*
 ]
 
 #definition[
@@ -133,34 +135,34 @@
 ]
 
 #property[
-  Dot product is inner product, and $(RR^n, chevron.l ., . chevron.r)$ is *Euclidean vector space*
+  Dot product is inner product, and $(RR^n, ip(., .))$ is *Euclidean vector space*
 ]
 
 #problem[
   Consider $V = RR^2$. Define
   $
-    chevron.l x, y chevron.r = 2 x_1 y_1 + x_1 y_2 + x_2 y_1 + 2 x_2 y_2
+    ip(x, y) = 2 x_1 y_1 + x_1 y_2 + x_2 y_1 + 2 x_2 y_2
   $
-  Show that $chevron.l .,. chevron.r$ is an inner product in $RR^2$
+  Show that $ip(., .)$ is an inner product in $RR^2$
 ]  <prob:positive-definite>
 #solution(qed: auto)[
-  - $chevron.l .,. chevron.r$ is a bilinear mapping _(The solution is similar to @prob:bilinear)_ \ \
+  - $ip(., .)$ is a bilinear mapping _(The solution is similar to @prob:bilinear)_ \ \
 
-  - $chevron.l .,. chevron.r$ is symmetric
+  - $ip(., .)$ is symmetric
   $
-    chevron.l x, y chevron.r & = 2 x_1 y_1 + x_1 y_2 + x_2 y_1 + 2 x_2 y_2 \
-                             & = 2 y_1 x_1 + y_1 x_2 + y_2 x_1 + 2 x_2 y_2 = B(y, x)
+    ip(., .) & = 2 x_1 y_1 + x_1 y_2 + x_2 y_1 + 2 x_2 y_2 \
+             & = 2 y_1 x_1 + y_1 x_2 + y_2 x_1 + 2 x_2 y_2 = B(y, x)
   $
 
-  - $chevron.l .,. chevron.r$ is positive definite
+  - $ip(., .)$ is positive definite
   $
-    chevron.l x, x chevron.r & = 2 x_1^2 + 2 x_2^2 + 2 x_1 x_2 \
-                             & = (x_1 + x_2)^2 + x_1^2 + x_2^2 >= 0
+    ip(., .) & = 2 x_1^2 + 2 x_2^2 + 2 x_1 x_2 \
+             & = (x_1 + x_2)^2 + x_1^2 + x_2^2 >= 0
   $
   The equality occur only when $x_1 = 0$, $x_2 = 0$, $x_1 + x_2 = 0$ which is $x = arrow(0)$\
-  $=> chevron.l .,. chevron.r > 0$ for any $RR^2 in.rev x != arrow(0)$, or $chevron.l .,. chevron.r$ is positive definite \ \
+  $=> ip(., .) > 0$ for any $RR^2 in.rev x != arrow(0)$, or $ip(., .)$ is positive definite \ \
 
-  So $chevron.l .,. chevron.r$ satisfies all properties to be an inner product
+  So $ip(., .)$ satisfies all properties to be an inner product
 ]
 
 #definition[
@@ -214,19 +216,19 @@
 
 == Lengths and Distances
 
-#definition[The *norm* is $||x|| := sqrt(chevron.l x"," x chevron.r)$]
-#definition[The *distance between $x$ and $y$* is $d(x, y) := ||x - y|| = sqrt(chevron.l x - y"," x - y chevron.r)$]
+#definition[The *norm* is $norm(x) := sqrt(ip(x, x))$]
+#definition[The *distance between $x$ and $y$* is $d(x, y) := norm(x - y) = sqrt(ip(x - y, x - y))$]
 #theorem[
   *Cauchy-Schwarz* inequality
   $
-    |chevron.l x, y chevron.r| <= ||x|| ||y||
+    |ip(x, y)| <= norm(x) norm(y)
   $
 ]
 
 #problem[
-  Let the inner product $chevron.l .,. chevron.r$ be defined on $RR^n$ by
+  Let the inner product $ip(., .)$ be defined on $RR^n$ by
   $
-    chevron.l x, y chevron.r = x_1 y_1 - x_1 y_2 - x_2 y_1 + 3 x_2 y_2
+    ip(x, y) = x_1 y_1 - x_1 y_2 - x_2 y_1 + 3 x_2 y_2
   $
   Find the distance between $u = vec(1, 1)$ and $v = vec(-1, 2)$
 ]
@@ -235,7 +237,7 @@
     u - v = vec(2, -1)
   $
   $
-    d(u, v) & = ||u - v|| = sqrt(chevron.l u - v", " u - v chevron.r) \
+    d(u, v) & = norm(u - v) = sqrt(ip(u - v, u - v)) \
             & = sqrt(2 dot 2 - 2 dot (-1) - (-1) dot 2 + 3 dot (-1) dot (-1)) \
             & = sqrt(11)
   $
@@ -246,26 +248,26 @@
 #definition[
   The *angle* between vector $x$ and $y$ is the number $theta in [0, pi]$ defined by
   $
-    cos theta = (chevron.l x, y chevron.r)/(||x|| ||y||)
+    cos theta = (ip(x, y))/(norm(x) norm(y))
   $
 ]
 #problem[
-  Define the inner product $chevron.l .,. chevron.r$
+  Define the inner product $ip(., .)$
   $
-    chevron.l x, y chevron.r = x dot y = x_1 y_1 + x_2 y_2 italic("(dot product)")
+    ip(x, y) = x dot y = x_1 y_1 + x_2 y_2 italic("(dot product)")
   $
   Find the angle between $x = vec(1, 0)$ and $y = vec(-1/2, sqrt(3)/2)$
 ]
 #solution(qed: auto)[
   $
-    chevron.l x, y chevron.r = 1 dot (-1/2) + 0 dot sqrt(3)/2 = -1/2
+    ip(x, y) = 1 dot (-1/2) + 0 dot sqrt(3)/2 = -1/2
   $
   $
-    ||x|| = sqrt(1 dot 1 + 0 dot 0) = 1 \
-    ||y|| = sqrt(-1/2 dot -1/2 + sqrt(3)/2 dot sqrt(3)/2) = 1
+    norm(x) = sqrt(1 dot 1 + 0 dot 0) = 1 \
+    norm(y) = sqrt(-1/2 dot -1/2 + sqrt(3)/2 dot sqrt(3)/2) = 1
   $
   $
-    cos theta = (chevron.l x, y chevron.r)/(||x|| ||y||) = (-1/2)/(1 dot 1) = -1/2
+    cos theta = ip(x, y)/(norm(x) norm(y)) = (-1/2)/(1 dot 1) = -1/2
   $
   $
     => theta = cos^(-1)(-1/2) = (2 pi) / 3
@@ -273,10 +275,10 @@
 ]
 
 #definition[
-  Two vectors $x$ and $y$ are *orthogonal* (or *$x perp y$*) $<=> chevron.l x, y chevron.r = 0$
+  Two vectors $x$ and $y$ are *orthogonal* (or *$x perp y$*) $<=> ip(x, y) = 0$
 ]
 #definition[
-  If *$x perp y$* and $||x|| = ||y|| = 1$ _($x$ and $y$ are unit vectors)_ then $x$ and $y$ are *orthonormal*
+  If *$x perp y$* and $norm(x) = norm(y) = 1$ _($x$ and $y$ are unit vectors)_ then $x$ and $y$ are *orthonormal*
 ]
 
 #definition[
@@ -290,7 +292,7 @@
   - $A^(-1) = A^T$
   - $A$ preserve the length of any vector $x in RR^n$
   $
-    ||A x|| = ||x||
+    norm(A x) = norm(x)
   $
   - $A$ preserve the angle between two vectors $x$ and $y$ in $RR^n$
   $
@@ -327,10 +329,10 @@
 #example[Most common basis for $RR^2$ is $B = {vec(1, 0), vec(0, 1)}$]
 
 #definition[
-  Consider an dimensional inner product vector space $(V, chevron.l .,. chevron.r)$ and a basis $B = {b_1, ..., b_n}$ of $V$. $B$ is *orthonormal basis* if
+  Consider an dimensional inner product vector space $(V, ip(., .))$ and a basis $B = {b_1, ..., b_n}$ of $V$. $B$ is *orthonormal basis* if
 
   $
-    chevron.l b_i, b_j chevron.r = cases(
+    ip(b_i, b_j) = cases(
       1 "  if" i = j,
       0 "  if" i != j
     )
@@ -339,36 +341,36 @@
 #theorem[
   Let $B = {b_1, ..., b_n}$ be an orthonormal basis of an inner product space $V$. If $x$ is any vector in $V$, then
   $
-    x = chevron.l x, b_1 chevron.r b_1 + ... + chevron.l x, b_n chevron.r b_n
+    x = ip(x, b_1) b_1 + ... + ip(x, b_n) b_n
   $
 ]
 
 #problem[
   Show that $B = {vec(1, -1), vec(1, 0)}$ is an orthonormal basis of $RR^n$ with inner product
   $
-    chevron.l x, y chevron.r = x^T A y, " where" A = mat(1, 1; 1, 2)
+    ip(x, y) = x^T A y, " where" A = mat(1, 1; 1, 2)
   $
 ]
 #solution[
   $
-    chevron.l b_1, b_1 chevron.r & = chevron.l vec(1, -1), vec(1, -1) chevron.r \
-                                 & = mat(1, -1) A vec(1, -1) \
-                                 & = 1
+    ip(b_1, b_1) & = ip(vec(1, -1), vec(1, -1)) \
+                 & = mat(1, -1) A vec(1, -1) \
+                 & = 1
   $
   $
-    chevron.l b_1, b_2 chevron.r & = chevron.l vec(1, -1), vec(1, 0) chevron.r \
-                                 & = mat(1, -1) A vec(1, 0) \
-                                 & = 0
+    ip(b_1, b_2) & = ip(vec(1, -1), vec(1, 0)) \
+                 & = mat(1, -1) A vec(1, 0) \
+                 & = 0
   $
   $
-    chevron.l b_2, b_1 chevron.r & = chevron.l vec(1, 0), vec(1, -1) chevron.r \
-                                 & = mat(1, 0) A vec(1, -1) \
-                                 & = 0
+    ip(b_1, b_2) & = ip(vec(1, 0), vec(1, -1)) \
+                 & = mat(1, 0) A vec(1, -1) \
+                 & = 0
   $
   $
-    chevron.l b_2, b_2 chevron.r & = chevron.l vec(1, 0), vec(1, 0) chevron.r \
-                                 & = mat(1, 0) A vec(1, 0) \
-                                 & = 1
+    ip(b_2, b_2) & = ip(vec(1, 0), vec(1, 0)) \
+                 & = mat(1, 0) A vec(1, 0) \
+                 & = 1
   $
   So $B$ is an orthonormal basis
 ]
@@ -378,12 +380,45 @@
   Define vectors $b_1, b_2,..., b_n$ in $V$ as follows:
   $
     b_1 &= v_1 \
-    b_2 &= v_2 - (chevron.l v_2, b_1 chevron.r)/(||b_1||^2) b_1 \
+    b_2 &= v_2 - ip(v_2, b_1)/norm(b_1)^2 b_1 \
     ... \
-    b_k &= v_k - (chevron.l v_k, b_1 chevron.r)/(||b_1||^2) b_1 - (chevron.l v_k, b_2 chevron.r)/(||b_2||^2) b_2 - ... - (chevron.l v_k, b_(k - 1) chevron.r)/(||b_(k - 1)||^2) b_k \
+    b_k &= v_k - ip(v_k, b_1)/norm(b_1)^2 b_1 - ip(v_k, b_2)/norm(b_2)^2 b_2 - ... - ip(v_k, b_(k - 1))/norm(b_(k - 1))^2 b_k \
   $
   for each $k = 2,..., n$. Then
   - ${b_1, ..., b_n}$ is an orthogonal basis of V
   - $"span"{b_1, ..., b_k} = "span"{v_1, ..., v_k}$ for each $k = 1,...,n$
-  - ${b_1/(||b_1||), ..., b_n/(||b_n||)}$ is an orthonormal basis of $V$
+  - ${b_1/norm(b_1), ..., b_n/norm(b_n)}$ is an orthonormal basis of $V$
+]
+
+#problem[
+  Given basis
+  $
+    {vec(1, 1, 0), vec(1, 0, 1), vec(0, 1, 1)}
+  $
+  and inner product as *dot product*.\
+  Apply Gram-Schmidt process to find orthonormal basis
+]
+#solution(qed: auto)[
+  $
+       b_1 & = v_1 = vec(1, 1, 0) \
+    => e_1 & = b_1/norm(b_1) = vec(1/sqrt(2), 1/sqrt(2), 0)
+  $
+  $
+       b_2 & = v_2 - ip(v_2, b_1)/norm(b_1)^2 b_1 \
+           & = vec(1, 0, 1) - (mat(1, 0, 1) vec(1, 1, 0))/norm(vec(1, 1, 0))^2 vec(1, 1, 0) \
+           & = vec(1/2, -1/2, 1) \
+    => e_2 & = b_2 / norm(b_2) = (1/sqrt(6), 1/sqrt(6), 2/ sqrt(6))
+  $
+  $
+       b_3 & = v_3 - ip(v_3, b_1)/norm(b_1)^2 b_1 - ip(v_3, b_2)/norm(b_2)^2 b_2 = vec(-2/3, 2/3, 2/3) \
+    => e_3 & = vec(-1/sqrt(3), 1/sqrt(3), 1/sqrt(3))
+  $
+  So we have *orthogonal basis*
+  $
+    {vec(1, 1, 0), vec(1/2, -1/2, 1), vec(-2/3, 2/3, 2/3)}
+  $
+  and *orthonormal basis*
+  $
+    {vec(1/sqrt(2), 1/sqrt(2), 0), vec(1/sqrt(6), -1/sqrt(6), 2/sqrt(6)), vec(-1/sqrt(3), 1/sqrt(3), 1/sqrt(3))}
+  $
 ]
