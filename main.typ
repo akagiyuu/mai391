@@ -278,3 +278,29 @@
 #definition[
   If *$x perp y$* and $||x|| = ||y|| = 1$ _($x$ and $y$ are unit vectors)_ then $x$ and $y$ are *orthonormal*
 ]
+
+#definition[
+  A square matrix $A in RR^(n crossmark n)$ is an *orthogonal matrix* if and only if
+  $
+    A A^T = A^T A = I_n
+  $
+]
+#property[
+  If $A in RR^(n crossmark n)$ is orthogonal then
+  - $A^(-1) = A^T$
+  - $A$ preserve the length of any vector $x in RR^n$
+  $
+    ||A x|| = ||x||
+  $
+  - $A$ preserve the angle between two vectors $x$ and $y$ in $RR^n$
+  $
+    "angle"(A x, A y) = "angle"(x, y)
+  $
+]
+#note[
+  For square matrix $A in RR^(n crossmark n) $, $A^(-1)$ is defined as matrix with
+  $
+    A A^(-1) = A^(-1) A = I_n
+  $
+  So if $A$ is orthogonal, $A^T = A^(-1)$
+]
